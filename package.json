@@ -1,0 +1,19 @@
+{
+  "name": "portfolioapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/AndersonOrtizDiasJunior/PortfolioAPI.git"
+  },
+  "author": "Anderson Ortiz Dias Junior",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AndersonOrtizDiasJunior/PortfolioAPI/issues"
+  },
+  "homepage": "https://github.com/AndersonOrtizDiasJunior/PortfolioAPI#readme"
+}
