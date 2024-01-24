@@ -1,5 +1,6 @@
 const mongodb = require('../data/database');
 const ObjectId = require('mongodb').ObjectId;
+const { validationResult } = require('express-validator');
 
 // Read
 const getAbout = async (req, res) => {
@@ -16,6 +17,11 @@ const getAbout = async (req, res) => {
 // Update
 const updateAbout = async (req, res) => { 
     //#swagger.tags=['About']
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+
     const id = new ObjectId('65af90366fe4eea8ebbb27f0');
     const about = {
         headline: req.body.headline,

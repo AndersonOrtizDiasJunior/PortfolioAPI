@@ -1,9 +1,15 @@
 const mongodb = require('../data/database');
 const ObjectId = require('mongodb').ObjectId;
+const { validationResult } = require('express-validator');
 
 // Create
 const addTechnologies = async (req, res) => { 
     //#swagger.tags=['Technologies']
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+
     const technologies = {
         id: req.body.id,
         logos: req.body.logos
@@ -45,6 +51,11 @@ const getSingle = async (req, res) => {
 // Update
 const updateTechnologies = async (req, res) => { 
     //#swagger.tags=['Technologies']
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+
     const id = new ObjectId(req.params.id);
     const technologies = {
         id: req.body.id,

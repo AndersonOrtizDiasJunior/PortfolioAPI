@@ -1,9 +1,15 @@
 const mongodb = require('../data/database');
 const ObjectId = require('mongodb').ObjectId;
+const { validationResult } = require('express-validator');
 
 // Create
 const addExperience = async (req, res) => { 
     //#swagger.tags=['Experience']
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+
     const experience = {
             visible: req.body.visible,
             name: req.body.name,
@@ -48,6 +54,11 @@ const getSingle = async (req, res) => {
 // Update
 const updateExperience = async (req, res) => { 
     //#swagger.tags=['Experience']
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+
     const id = new ObjectId(req.params.id);
     const experience = {
         visible: req.body.visible,

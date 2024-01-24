@@ -1,6 +1,7 @@
 const express = require('express');
 const mongodb = require('./data/database');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -14,6 +15,7 @@ app.use((req, res, next) => {
     next();
 });
 app.use('/', require('./routes'));
+app.use(cors());
 
 mongodb.initDb((err) => {
     if (err) {
@@ -23,3 +25,14 @@ mongodb.initDb((err) => {
         app.listen(port, () => (console.log(`Database is listening and Node is running on port ${port}`)));
     }
 })
+
+
+// Handling Errors
+app.use((err, req, res, next) => {
+    // console.log(err);
+    err.statusCode = err.statusCode || 500;
+    err.message = err.message || "Internal Server Error";
+    res.status(err.statusCode).json({
+      message: err.message,
+    });
+});

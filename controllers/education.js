@@ -1,9 +1,15 @@
 const mongodb = require('../data/database');
 const ObjectId = require('mongodb').ObjectId;
+const { validationResult } = require('express-validator');
 
 // Create
 const addEducation = async (req, res) => { 
     //#swagger.tags=['Education']
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+
     const education = {
             visible: req.body.visible,
             name: req.body.name,
@@ -48,6 +54,11 @@ const getSingle = async (req, res) => {
 // Update
 const updateEducation = async (req, res) => { 
     //#swagger.tags=['Education']
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+
     const id = new ObjectId(req.params.id);
     const education = {
         visible: req.body.visible,
