@@ -44,7 +44,7 @@ exports.projectValidation = [
 ];
 
 exports.technologiesValidation = [
-    check('id', 'ID is required').not().isEmpty(),
+    check('project', 'Project is required').not().isEmpty(),
     check('logos', 'Logos are required').isArray({ min: 1 })
 ];
   
