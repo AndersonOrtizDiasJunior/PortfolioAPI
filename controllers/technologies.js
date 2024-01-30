@@ -11,7 +11,7 @@ const addTechnologies = async (req, res) => {
     }
 
     const technologies = {
-        id: req.body.id,
+        project: req.body.project,
         logos: req.body.logos
     };
     
@@ -57,9 +57,9 @@ const updateTechnologies = async (req, res) => {
 
     const id = new ObjectId(req.params.id);
     const technologies = {
-        id: req.body.id,
+        project: req.body.project,
         logos: req.body.logos
-    }
+    };
 
     mongodb.technologies().replaceOne({_id: id}, technologies)
     .then( response => {
