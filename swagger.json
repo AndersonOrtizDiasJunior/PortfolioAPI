@@ -1,13 +1,14 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Portfolio API",
+    "title": "Anderson's Portfolio API",
     "description": "Anderson's Portfolio API",
     "version": "1.0.0"
   },
   "host": "localhost:3000",
   "basePath": "/",
   "schemes": [
+    "http",
     "https"
   ],
   "paths": {
@@ -657,7 +658,7 @@
         }
       }
     },
-    "/technologies/{id}": {
+    "/technologies/{project}": {
       "get": {
         "tags": [
           "Technologies"
@@ -668,7 +669,7 @@
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "project",
             "in": "path",
             "required": true,
             "type": "string"
@@ -679,7 +680,9 @@
             "description": "OK"
           }
         }
-      },
+      }
+    },
+    "/technologies/{id}": {
       "put": {
         "tags": [
           "Technologies"
@@ -722,9 +725,7 @@
             "description": "Internal Server Error"
           }
         }
-      }
-    },
-    "/technologies/{project}": {
+      },
       "delete": {
         "tags": [
           "Technologies"
@@ -732,7 +733,7 @@
         "description": "",
         "parameters": [
           {
-            "name": "project",
+            "name": "id",
             "in": "path",
             "required": true,
             "type": "string"

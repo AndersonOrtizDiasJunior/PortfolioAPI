@@ -2,6 +2,9 @@ const express = require('express');
 const mongodb = require('./data/database');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const passport = require('passport');
+const session = require('express-session');
+const GitHubStrategy = require('passport-github2').Strategy;
 
 const app = express();
 const port = process.env.PORT || 3000;
