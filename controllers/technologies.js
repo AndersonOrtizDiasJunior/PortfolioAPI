@@ -38,7 +38,7 @@ const getAll = async (req, res) => {
 
 const getSingle = async (req, res) => {
     //#swagger.tags=['Technologies']
-    const result = await mongodb.technologies().find({"id": req.params.id});
+    const result = await mongodb.technologies().find({"project": req.params.project});
     result.toArray().then((technologiess) => {
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json(technologiess[0]);

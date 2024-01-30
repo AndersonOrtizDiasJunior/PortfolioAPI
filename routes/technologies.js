@@ -11,6 +11,6 @@ router.get('/:id', technologiesController.getSingle);
 
 router.put('/:id', validator.technologiesValidation, technologiesController.updateTechnologies);
 
-router.delete('/:id', technologiesController.deleteTechnologies);
+router.delete('/:project', technologiesController.deleteTechnologies);
 
 module.exports = router;
