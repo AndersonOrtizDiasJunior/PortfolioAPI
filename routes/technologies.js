@@ -5,13 +5,13 @@ const { isAuthenticated } = require('../middleware/authenticate.js');
 
 const technologiesController = require('../controllers/technologies');
 
-router.post('/', validator.technologiesValidation, technologiesController.addTechnologies);
+router.post('/',isAuthenticated, validator.technologiesValidation, technologiesController.addTechnologies);
 
 router.get('/', technologiesController.getAll);
 router.get('/:project', technologiesController.getSingle);
 
-router.put('/:id', validator.technologiesValidation, technologiesController.updateTechnologies);
+router.put('/:id',isAuthenticated, validator.technologiesValidation, technologiesController.updateTechnologies);
 
-router.delete('/:id', technologiesController.deleteTechnologies);
+router.delete('/:id',isAuthenticated, technologiesController.deleteTechnologies);
 
 module.exports = router;
