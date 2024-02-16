@@ -1,31 +1,28 @@
 const { check } = require('express-validator');
 
-exports.aboutValidation = [
-    check('headline', 'Headline is requied').not().isEmpty(),
-    check('jobTitle', 'Job Title is requied').not().isEmpty(),
-    check('city', 'City is requied').not().isEmpty(),
-    check('phone', 'Phone is requied').not().isEmpty(),
-    check('description', 'Description is requied').not().isEmpty(),
-    check('image', 'Image is requied').not().isEmpty(),
-    check('whatsapp.label', 'Whatsapp label is requied').not().isEmpty(),
-    check('whatsapp.number', 'Whatsapp number is requied').not().isEmpty(),
-    check('email', 'Please include a valid email').isEmail().normalizeEmail({ gmail_remove_dots: true }),
+exports.userValidation = [
+    check('Username', 'Phone is requied').not().isEmpty(),
+    check('Name', 'Phone is requied').not().isEmpty(),
+    check('Email', 'Please include a valid email').isEmail().normalizeEmail({ gmail_remove_dots: true }),
+    check('Password', 'Password is requied').not().isEmpty()
 ];
 
-exports.educationValidation = [
-    check('visible', 'Visible should be boolean').isBoolean(),
-    check('name', 'Name is required').not().isEmpty(),
-    check('date', 'Date is required').not().isEmpty(),
-    check('instituition', 'Instituition is required').not().isEmpty(),
-    check('description', 'Description is required').not().isEmpty()
+exports.charValidation = [
+    check('Game', 'Game is required').not().isEmpty(),
+    check('User', 'User is required').not().isEmpty(),
+    check('Params', 'Params needs to be an Array').isArray({ min: 1})
 ];
 
-exports.experienceValidation = [
-    check('visible', 'Visible should be boolean').isBoolean(),
-    check('name', 'Name is required').not().isEmpty(),
-    check('date', 'Date is required').not().isEmpty(),
-    check('instituition', 'Instituition is required').not().isEmpty(),
-    check('bullets', 'Bullets are required').isArray({ min: 1 })
+exports.gameValidation = [
+    check('Name', 'Name is required').not().isEmpty(),
+    check('Master', 'Master is required').not().isEmpty(),
+    check('Description', 'Description is required').not().isEmpty(),
+    check('Players', 'Players needs to be an Array').isArray()
+];
+
+exports.attValidation = [
+    check('Name', 'Name is required').not().isEmpty(),
+    check('Type', 'Type is required').not().isEmpty()
 ];
 
 exports.projectValidation = [

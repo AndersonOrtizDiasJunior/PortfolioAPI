@@ -1,12 +1,14 @@
 const swaggerAutogen = require('swagger-autogen')();
+const dotenv = require('dotenv');
+dotenv.config();
 
 const doc = {
   info: {
-    title: 'Portfolio API',
-    description: 'My Portfolio API',
+    title: "RPG Sheet API",
+    description: "RPG Sheet API",
   },
-  host: 'localhost:3000',
-  schemes: ['http','https']
+  host: process.env.SWAGGERHOST,
+  schemes: [process.env.SWAGGERSCHEME]
 };
 
 const outputFile = './swagger.json';
