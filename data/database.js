@@ -5,20 +5,24 @@ const MongoClient = require('mongodb').MongoClient;
 
 let database;
 
-const users = () => {
-    return getDatabase().db().collection('Users');
+const about = () => {
+    return getDatabase().db().collection('about');
 } 
 
-const games = () => {
-    return getDatabase().db().collection('Games');
+const education = () => {
+    return getDatabase().db().collection('education');
 } 
 
-const characters = () => {
-    return getDatabase().db().collection('Characters');
+const experience = () => {
+    return getDatabase().db().collection('experience');
 } 
 
-const attributes = () => {
-    return getDatabase().db().collection('Attributes');
+const projects = () => {
+    return getDatabase().db().collection('projects');
+} 
+
+const technologies = () => {
+    return getDatabase().db().collection('technologies');
 } 
 
 const initDb = (callback) => {
@@ -44,8 +48,9 @@ const getDatabase = () => {
 module.exports = {
     initDb,
     getDatabase,
-    users,
-    characters,
-    attributes,
-    games
+    about,
+    education,
+    experience,
+    projects,
+    technologies
 };
