@@ -29,11 +29,11 @@ const getByGame = async (req, res) => {
     //#swagger.tags=['Attributes']
     const gameId = new ObjectId(req.params.gameId);
     const result = await mongodb.games().find({_id: gameId});
-    let games = await result.toArray();
-    let attributeIDs = games[0].Attributes
-    let attributes = []
+    result.toArray().then(async (games) => {
+        let attributeIDs = games[0].Attributes
+        let attributes = []
 
-    for (const rawID of attributeIDs) {
+        for (const rawID of attributeIDs) {
             const attId = new ObjectId(rawID);
             try {
                 let idResult = await mongodb.attributes().find({ _id: attId });
@@ -44,8 +44,11 @@ const getByGame = async (req, res) => {
             }
         }
         
-    res.setHeader('Content-Type', 'application/json');
-    res.status(200).json(attributes);
+        res.setHeader('Content-Type', 'application/json');
+        res.status(200).json(attributes);
+    }).catch((err) => {
+        console.log(err);
+    });
 };
 
 const getByID = async (req, res) => {

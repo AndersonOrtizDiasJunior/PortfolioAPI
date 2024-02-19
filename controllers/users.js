@@ -22,10 +22,7 @@ const addUser = async (req, res) => {
         Name: req.body.Name,
         Username: req.body.Username,
         Email: req.body.Email,
-        Password: hashedPassword,
-        Birthdate: req.body.Birthdate,
-        Gender: req.body.Gender,
-        Country: req.body.Country
+        Password: hashedPassword
     };
     
     mongodb.users().insertOne(user).then( response => {
