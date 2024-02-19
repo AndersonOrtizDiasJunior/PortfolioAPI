@@ -1,10 +1,13 @@
 const { check } = require('express-validator');
 
 exports.userValidation = [
-    check('Username', 'Phone is requied').not().isEmpty(),
-    check('Name', 'Phone is requied').not().isEmpty(),
+    check('Username', 'Username is required').not().isEmpty(),
+    check('Name', 'Name is required').not().isEmpty(),
     check('Email', 'Please include a valid email').isEmail().normalizeEmail({ gmail_remove_dots: true }),
-    check('Password', 'Password is requied').not().isEmpty()
+    check('Password', 'Password is required').not().isEmpty(),
+    check('Birthdate', 'Birthdate must be a string in the format dd-mm-yyyy').isString().matches(/^\d{2}-\d{2}-\d{4}$/),
+    check('Gender', 'Gender must be either "M", "F", or "O"').isIn(['M', 'F', 'O']),
+    check('Country', 'Country must be a string').isString()
 ];
 
 exports.charValidation = [
@@ -23,25 +26,5 @@ exports.gameValidation = [
 exports.attValidation = [
     check('Name', 'Name is required').not().isEmpty(),
     check('Type', 'Type is required').not().isEmpty()
-];
-
-exports.projectValidation = [
-    check('id', 'ID is required').not().isEmpty(),
-    check('name', 'Name is required').not().isEmpty(),
-    check('filter', 'Filter is required').not().isEmpty(),
-    check('thumb', 'Thumb is required').not().isEmpty(),
-    check('portfolio', 'Portfolio should be boolean').isBoolean(),
-    check('images', 'Images are required').isArray({ min: 1 }),
-    check('description', 'Description is required').not().isEmpty(),
-    check('skills', 'Skills are required').isArray({ min: 1 }),
-    check('type', 'Type is required').not().isEmpty(),
-    check('category', 'Category is required').not().isEmpty(),
-    check('date.title', 'Date title is required').not().isEmpty(),
-    check('date.value', 'Date value is required').not().isEmpty()
-];
-
-exports.technologiesValidation = [
-    check('project', 'Project is required').not().isEmpty(),
-    check('logos', 'Logos are required').isArray({ min: 1 })
 ];
   
