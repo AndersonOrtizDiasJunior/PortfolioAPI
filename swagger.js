@@ -5,8 +5,8 @@ const doc = {
     title: 'Portfolio API',
     description: 'My Portfolio API',
   },
-  host: 'localhost:3000',
-  schemes: ['http','https']
+  host: 'andersonportfolio.onrender.com',
+  schemes: ['https']
 };
 
 const outputFile = './swagger.json';

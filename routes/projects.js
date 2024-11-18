@@ -8,7 +8,7 @@ const projectsController = require('../controllers/projects');
 router.post('/',isAuthenticated, validator.projectValidation, projectsController.addProjects);
 
 router.get('/', projectsController.getAll);
-router.get('/:filter', projectsController.getFiltered);
+router.get('/filter/:filter', projectsController.getFiltered);
 router.get('/:id', projectsController.getSingle);
 
 router.put('/:id',isAuthenticated, validator.projectValidation, projectsController.updateProjects);
