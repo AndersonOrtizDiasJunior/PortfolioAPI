@@ -50,8 +50,8 @@ const getAll = async (req, res) => {
 
 const getFiltered = async (req, res) => {
     //#swagger.tags=['Projects']
-    const filter = new ObjectId(req.params.filter);
-    const result = await mongodb.projects().find({_filter: filter});
+    const filter = req.params.filter;
+    const result = await mongodb.projects().find({"filter": filter});
     result.toArray().then((projectss) => {
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json(projectss);
