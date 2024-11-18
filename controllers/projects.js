@@ -48,6 +48,18 @@ const getAll = async (req, res) => {
     });
 };
 
+const getFiltered = async (req, res) => {
+    //#swagger.tags=['Projects']
+    const filter = new ObjectId(req.params.filter);
+    const result = await mongodb.projects().find({_filter: filter});
+    result.toArray().then((projectss) => {
+        res.setHeader('Content-Type', 'application/json');
+        res.status(200).json(projectss);
+    }).catch((err) => {
+        console.log(err);
+    });
+};
+
 const getSingle = async (req, res) => {
     //#swagger.tags=['Projects']
     const projectsId = new ObjectId(req.params.id);
@@ -118,6 +130,7 @@ const deleteProjects = async (req, res) => {
 module.exports = {
     addProjects,
     getAll,
+    getFiltered,
     getSingle,
     updateProjects,
     deleteProjects
